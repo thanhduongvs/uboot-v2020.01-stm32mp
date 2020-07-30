@@ -14,8 +14,8 @@
 #include <dt-bindings/rtc/rtc-stm32.h>
 
 / {
-	model = "STMicroelectronics STM32MP157C-DK2 Discovery Board";
-	compatible = "kmtek,stm32mp157c-kmtek-octavo", "st,stm32mp157";
+	model = "STM32MP157C-KMTEK-OCTAVO Develop Board";
+	compatible = "st,stm32mp157c-kmtek-octavo", "st,stm32mp157";
 
 	aliases {
 		serial0 = &uart4;
@@ -82,31 +82,6 @@
 				remote-endpoint = <&dsi_out>;
 			};
 		};
-	};
-};
-
-&i2c1 {
-	touchscreen@2a {
-		compatible = "focaltech,ft6236";
-		reg = <0x2a>;
-		interrupts = <2 2>;
-		interrupt-parent = <&gpiof>;
-		interrupt-controller;
-		touchscreen-size-x = <480>;
-		touchscreen-size-y = <800>;
-		panel = <&panel_otm8009a>;
-		status = "okay";
-	};
-	touchscreen@38 {
-		compatible = "focaltech,ft6236";
-		reg = <0x38>;
-		interrupts = <2 2>;
-		interrupt-parent = <&gpiof>;
-		interrupt-controller;
-		touchscreen-size-x = <480>;
-		touchscreen-size-y = <800>;
-		panel = <&panel_otm8009a>;
-		status = "okay";
 	};
 };
 
