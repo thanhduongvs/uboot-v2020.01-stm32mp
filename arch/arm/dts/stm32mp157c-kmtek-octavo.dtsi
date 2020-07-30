@@ -155,25 +155,6 @@
 	status = "okay";
 };
 
-&ethernet0 {
-	status = "okay";
-	pinctrl-0 = <&ethernet0_rgmii_pins_a>;
-	pinctrl-1 = <&ethernet0_rgmii_pins_sleep_a>;
-	pinctrl-names = "default", "sleep";
-	phy-mode = "rgmii-id";
-	max-speed = <1000>;
-	phy-handle = <&phy0>;
-
-	mdio0 {
-		#address-cells = <1>;
-		#size-cells = <0>;
-		compatible = "snps,dwmac-mdio";
-		phy0: ethernet-phy@0 {
-			reg = <0>;
-		};
-	};
-};
-
 &gpu {
 	contiguous-area = <&gpu_reserved>;
 	status = "okay";
@@ -232,7 +213,7 @@
 		VD-supply = <&v1v8_audio>;
 		VA-supply = <&v1v8_audio>;
 		VAHP-supply = <&v1v8_audio>;
-		reset-gpios = <&gpiog 9 GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpioh 13 GPIO_ACTIVE_LOW>;
 		clocks = <&sai2a>;
 		clock-names = "MCLK";
 		status = "okay";
@@ -567,43 +548,18 @@
 	};
 };
 
+/* sd card */
 &sdmmc1 {
 	pinctrl-names = "default", "opendrain", "sleep";
 	pinctrl-0 = <&sdmmc1_b4_pins_a>;
 	pinctrl-1 = <&sdmmc1_b4_od_pins_a>;
 	pinctrl-2 = <&sdmmc1_b4_sleep_pins_a>;
-	cd-gpios = <&gpiob 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+	cd-gpios = <&gpiof 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
 	disable-wp;
 	st,neg-edge;
 	bus-width = <4>;
 	vmmc-supply = <&v3v3>;
 	status = "okay";
-};
-
-&sdmmc3 {
-	pinctrl-names = "default", "opendrain", "sleep";
-	pinctrl-0 = <&sdmmc3_b4_pins_a>;
-	pinctrl-1 = <&sdmmc3_b4_od_pins_a>;
-	pinctrl-2 = <&sdmmc3_b4_sleep_pins_a>;
-	broken-cd;
-	st,neg-edge;
-	bus-width = <4>;
-	vmmc-supply = <&v3v3>;
-	status = "disabled";
-};
-
-&spi4 {
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&spi4_pins_a>;
-	pinctrl-1 = <&spi4_sleep_pins_a>;
-	status = "disabled";
-};
-
-&spi5 {
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&spi5_pins_a>;
-	pinctrl-1 = <&spi5_sleep_pins_a>;
-	status = "disabled";
 };
 
 &sram {
