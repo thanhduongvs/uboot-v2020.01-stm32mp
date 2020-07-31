@@ -98,11 +98,13 @@ int setup_mac_address(void)
 		return ret;
 	}
 
+	/*
 	ret = i2c_eeprom_read(dev, 0xfa, enetaddr, 0x6);
 	if (ret) {
 		printf("Error reading configuration EEPROM!\n");
 		return ret;
 	}
+	*/
 
 	if (is_valid_ethaddr(enetaddr))
 		eth_env_set_enetaddr("ethaddr", enetaddr);
