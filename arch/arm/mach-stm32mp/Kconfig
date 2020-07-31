@@ -85,6 +85,14 @@ config TARGET_DH_STM32MP1_PDK2
 	help
 		Target the DH PDK2 development kit with STM32MP15x SoM.
 
+config TARGET_DSTM32MP157C_KMTEK_OCTAVO
+	bool "STM32MP157C KMTE OCTAVO"
+	select STM32MP15x
+	imply BOOTCOUNT_LIMIT
+	imply CMD_BOOTCOUNT
+	help
+		Target the STM32MP157C KMTEK OCTAVO kit with STM32MP15x SoM.
+
 endchoice
 
 config STM32MP1_TRUSTED
@@ -178,5 +186,6 @@ endif
 
 source "board/st/stm32mp1/Kconfig"
 source "board/dhelectronics/dh_stm32mp1/Kconfig"
+source "board/kmtek/stm32mp157c_kmtek_octavo/Kconfig"
 
 endif

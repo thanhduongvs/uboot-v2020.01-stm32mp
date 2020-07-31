@@ -1,0 +1,7 @@
+STM32MP157C_KMTEK_OCTAVO BOARD
+M:	Thanh Duong <thanh.duong.vs@gmail.com>
+S:	Maintained
+F:	arch/arm/dts/tm32mp157c-kmtek-octavo*
+F:	board/kmtek/stm32mp157c_kmtek_octavo/
+F:	configs/stm32mp15_kmtek_octavo_defconfig
+F:	include/configs/stm32mp1.h

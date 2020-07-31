@@ -16,7 +16,7 @@
 - `export DEVICE_TREE=stm32mp157c-kmtek-octavo`
 - `export KBUILD_OUTPUT=./build`
 - `make distclean`
-- `make stm32mp15_basic_defconfig`
+- `make stm32mp15_kmtek_octavo_defconfig`
 - `make all -j8`
 
 ## 3. Output files u-boot
