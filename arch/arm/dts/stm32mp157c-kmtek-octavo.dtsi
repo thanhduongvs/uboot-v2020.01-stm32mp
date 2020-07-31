@@ -154,7 +154,9 @@
 	};
 
 	sdmmc2_pins_mx: sdmmc2_mx-0 {
+		u-boot,dm-pre-reloc;
 		pins1 {
+			u-boot,dm-pre-reloc;
 			pinmux = <STM32_PINMUX('A', 8, AF9)>, /* SDMMC2_D4 */
 					 <STM32_PINMUX('A', 9, AF10)>, /* SDMMC2_D5 */
 					 <STM32_PINMUX('B', 3, AF9)>, /* SDMMC2_D2 */
@@ -169,6 +171,7 @@
 			slew-rate = <1>;
 		};
 		pins2 {
+			u-boot,dm-pre-reloc;
 			pinmux = <STM32_PINMUX('E', 3, AF9)>; /* SDMMC2_CK */
 			bias-disable;
 			drive-push-pull;
@@ -177,7 +180,9 @@
 	};
 
 	sdmmc2_opendrain_pins_mx: sdmmc2_opendrain_mx-0 {
+		u-boot,dm-pre-reloc;
 		pins1 {
+			u-boot,dm-pre-reloc;
 			pinmux = <STM32_PINMUX('A', 8, AF9)>, /* SDMMC2_D4 */
 					 <STM32_PINMUX('A', 9, AF10)>, /* SDMMC2_D5 */
 					 <STM32_PINMUX('B', 3, AF9)>, /* SDMMC2_D2 */
@@ -191,12 +196,14 @@
 			slew-rate = <1>;
 		};
 		pins2 {
+			u-boot,dm-pre-reloc;
 			pinmux = <STM32_PINMUX('E', 3, AF9)>; /* SDMMC2_CK */
 			bias-disable;
 			drive-push-pull;
 			slew-rate = <2>;
 		};
 		pins3 {
+			u-boot,dm-pre-reloc;
 			pinmux = <STM32_PINMUX('G', 6, AF10)>; /* SDMMC2_CMD */
 			bias-disable;
 			drive-open-drain;
@@ -205,7 +212,9 @@
 	};
 
 	sdmmc2_sleep_pins_mx: sdmmc2_sleep_mx-0 {
+		u-boot,dm-pre-reloc;
 		pins {
+			u-boot,dm-pre-reloc;
 			pinmux = <STM32_PINMUX('A', 8, ANALOG)>, /* SDMMC2_D4 */
 					 <STM32_PINMUX('A', 9, ANALOG)>, /* SDMMC2_D5 */
 					 <STM32_PINMUX('B', 3, ANALOG)>, /* SDMMC2_D2 */
@@ -611,6 +620,7 @@
 
 /* eMMC */
 &sdmmc2 {
+	u-boot,dm-pre-reloc;
 	pinctrl-names = "default", "opendrain", "sleep";
 	pinctrl-0 = <&sdmmc2_pins_mx>;
 	pinctrl-1 = <&sdmmc2_opendrain_pins_mx>;

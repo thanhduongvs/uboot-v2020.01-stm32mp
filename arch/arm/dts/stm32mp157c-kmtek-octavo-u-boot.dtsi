@@ -159,15 +159,10 @@
 	u-boot,dm-spl;
 };
 
-&sdmmc1_b4_pins_a {
-	u-boot,dm-spl;
-	pins1 {
-		u-boot,dm-spl;
-	};
-	pins2 {
-		u-boot,dm-spl;
-	};
+&sdmmc2{
+	u-boot,dm-pre-reloc;
 };
+
 #endif
 
 &uart4 {
