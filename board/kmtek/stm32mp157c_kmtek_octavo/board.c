@@ -75,42 +75,6 @@
  */
 DECLARE_GLOBAL_DATA_PTR;
 
-int setup_mac_address(void)
-{
-	struct udevice *dev;
-	ofnode eeprom;
-	unsigned char enetaddr[6];
-	int ret;
-
-	ret = eth_env_get_enetaddr("ethaddr", enetaddr);
-	if (ret)	/* ethaddr is already set */
-		return 0;
-
-	eeprom = ofnode_path("/soc/i2c@5c002000/eeprom@50");
-	if (!ofnode_valid(eeprom)) {
-		printf("Invalid hardware path to EEPROM!\n");
-		return -ENODEV;
-	}
-
-	ret = uclass_get_device_by_ofnode(UCLASS_I2C_EEPROM, eeprom, &dev);
-	if (ret) {
-		printf("Cannot find EEPROM!\n");
-		return ret;
-	}
-
-	/*
-	ret = i2c_eeprom_read(dev, 0xfa, enetaddr, 0x6);
-	if (ret) {
-		printf("Error reading configuration EEPROM!\n");
-		return ret;
-	}
-	*/
-
-	if (is_valid_ethaddr(enetaddr))
-		eth_env_set_enetaddr("ethaddr", enetaddr);
-
-	return 0;
-}
 
 int checkboard(void)
 {
@@ -504,18 +468,6 @@ int board_interface_eth_init(struct udevice *dev,
 	writel(value, syscfg + SYSCFG_PMCSETR);
 
 	return 0;
-}
-
-enum env_location env_get_location(enum env_operation op, int prio)
-{
-	if (prio)
-		return ENVL_UNKNOWN;
-
-#ifdef CONFIG_ENV_IS_IN_SPI_FLASH
-	return ENVL_SPI_FLASH;
-#else
-	return ENVL_NOWHERE;
-#endif
 }
 
 #if defined(CONFIG_OF_BOARD_SETUP)
